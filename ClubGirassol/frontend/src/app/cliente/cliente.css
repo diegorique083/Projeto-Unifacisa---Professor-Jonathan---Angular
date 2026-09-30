@@ -1,0 +1,48 @@
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+}
+
+.campo-cheio,
+.acoes {
+  grid-column: 1 / -1;
+}
+
+.acoes {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.acoes button mat-icon {
+  margin-right: 4px;
+}
+
+.lista-card {
+  margin-top: 24px;
+}
+
+.mensagem {
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.col-acoes {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.vazio {
+  text-align: center;
+  color: #777;
+  padding: 16px;
+}
+
+@media (max-width: 720px) {
+  .formulario {
+    grid-template-columns: 1fr;
+  }
+}

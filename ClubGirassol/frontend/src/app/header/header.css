@@ -1,0 +1,29 @@
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  justify-content: center;
+  gap: 4px;
+}
+
+.logo {
+  margin-right: 8px;
+}
+
+.titulo {
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 24px;
+}
+
+.nav a {
+  margin-left: 8px;
+}
+
+.nav a mat-icon {
+  margin-right: 4px;
+}
+
+.nav a.ativo {
+  background: rgba(255, 255, 255, 0.22);
+}
