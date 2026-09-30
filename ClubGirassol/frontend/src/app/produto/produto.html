@@ -1,0 +1,102 @@
+<section class="pagina">
+  <mat-card class="card formulario-card">
+    <mat-card-header>
+      <mat-card-title>{{ idEditando() !== null ? 'Editar Produto' : 'Novo Produto' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="produtoForm" (ngSubmit)="salvar()" class="formulario">
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo</mat-label>
+          <input matInput formControlName="tipo" placeholder="Ex: Camisa">
+          @if (produtoForm.get('tipo')?.invalid && produtoForm.get('tipo')?.touched) {
+            <mat-error>Informe o tipo</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tamanho</mat-label>
+          <input matInput formControlName="tamanho" placeholder="Ex: M">
+          @if (produtoForm.get('tamanho')?.invalid && produtoForm.get('tamanho')?.touched) {
+            <mat-error>Informe o tamanho</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Cor</mat-label>
+          <input matInput formControlName="cor" placeholder="Ex: Azul">
+          @if (produtoForm.get('cor')?.invalid && produtoForm.get('cor')?.touched) {
+            <mat-error>Informe a cor</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Preco</mat-label>
+          <input matInput formControlName="preco" placeholder="Ex: 99.90">
+          @if (produtoForm.get('preco')?.invalid && produtoForm.get('preco')?.touched) {
+            <mat-error>Informe o preco</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="acoes">
+          <button mat-raised-button color="primary" type="submit">
+            <mat-icon>{{ idEditando() !== null ? 'save' : 'add' }}</mat-icon>
+            {{ idEditando() !== null ? 'Salvar alteracoes' : 'Cadastrar' }}
+          </button>
+          @if (idEditando() !== null) {
+            <button mat-stroked-button type="button" (click)="cancelarEdicao()">
+              <mat-icon>close</mat-icon>
+              Cancelar
+            </button>
+          }
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card lista-card">
+    <mat-card-header>
+      <mat-card-title>Produtos cadastrados</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      @if (mensagem()) {
+        <p class="mensagem">{{ mensagem() }}</p>
+      }
+
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Tamanho</th>
+            <th>Cor</th>
+            <th>Preco</th>
+            <th class="col-acoes">Acoes</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (produto of produtos(); track produto.id) {
+            <tr>
+              <td>{{ produto.id }}</td>
+              <td>{{ produto.tipo }}</td>
+              <td>{{ produto.tamanho }}</td>
+              <td>{{ produto.cor }}</td>
+              <td>{{ produto.preco }}</td>
+              <td class="col-acoes">
+                <button mat-icon-button color="primary" title="Editar" (click)="editar(produto)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" title="Excluir" (click)="excluir(produto.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" class="vazio">Nenhum produto cadastrado.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</section>

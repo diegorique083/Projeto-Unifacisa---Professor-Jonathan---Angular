@@ -1,0 +1,42 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #fafafa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.pagina {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  padding: 8px;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tabela thead th {
+  background: #f0f0f0;
+  font-weight: 600;
+}
+
+.tabela tbody tr:hover {
+  background: #fafafa;
+}
